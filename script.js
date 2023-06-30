@@ -4,19 +4,11 @@ refreshButton.addEventListener("click", getAlphaChars);
 let table = document.getElementById("table");
 
 function getAlphaChars() {
-    let result = '';
     let letters = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase();
-    let count = 100;
 
-    while (0 < count) {
-        result += letters.charAt(Math.floor(Math.random() * letters.length));
-        result += '     ';
-        count--;
-        if (count % 10 === 0) {
-            result += '\n';
+    for (let i = 0, row; row = table.rows[i]; i++) {
+        for (let j = 0, col; col = row.cells[j]; j++) {
+            col.innerText = letters.charAt(Math.floor(Math.random() * letters.length));
         }
     }
-
-    document.getElementById("letters-div").innerText = result;
-    return result;
 }
