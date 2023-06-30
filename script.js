@@ -4,7 +4,20 @@ refreshButton.addEventListener("click", getAlphaChars);
 let table = document.getElementById("table");
 
 let downloadButton = document.getElementById("download-button");
-downloadButton.addEventListener("click", html2pdf().from(table).save());
+downloadButton.addEventListener("click", function() {
+    let mywindow = window.open("", "PRINT",
+                "height=400,width=600");
+
+    mywindow.document.write(table.innerHTML);
+
+    mywindow.document.close();
+    mywindow.focus();
+
+    mywindow.print();
+    mywindow.close();
+
+    return true;
+});
 
 function getAlphaChars() {
     let letters = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase();

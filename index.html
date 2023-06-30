@@ -4,6 +4,7 @@
         <title>Minh's Hart Chart App</title>
         <link rel="icon" type="image/png" href="/icons8-wise-mind-ios-16-filled-16.png">
         <link rel="stylesheet" type="text/css" href="layout.css">
+        <script src="html2pdf.bundle.min.js"></script>
     </head>
     <body>
         <!-- Header Section -->
@@ -153,8 +154,18 @@
                 <td>j</td>
             </tr>
         </table>
+        <script>
+            let button = document.getElementById("download-button");
+            button.addEventListener("click", function () {
+            let doc = new jsPDF("p", "mm", [300, 300]);
+            let makePDF = document.querySelector("#table");
 
-        <script src="html2pdf.bundle.min.js"></script>
+            // fromHTML Method
+            doc.fromHTML(makePDF);
+            doc.save("output.pdf");
+        });
+
+        </script>
         <script src="script.js"></script>
     </body>
 </html>
