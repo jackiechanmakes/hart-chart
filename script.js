@@ -3,6 +3,9 @@ refreshButton.addEventListener("click", getAlphaChars);
 
 let table = document.getElementById("table");
 
+let downloadButton = document.getElementById("download-button");
+downloadButton.addEventListener("click", html2pdf().from(table).save());
+
 function getAlphaChars() {
     let letters = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase();
 
