@@ -6,37 +6,16 @@ let table = document.getElementById("table");
 let downloadButton = document.getElementById("download-button");
 downloadButton.addEventListener("click", function() {
     let opt = {
-        margin:       [90, 0],
-        filename:     'test.pdf',
-        // image:        { type: 'jpeg', quality: 1.00 },
-        html2canvas:  { scale: 1, width: 1850, height: 900},
+        margin:       [5, 7, 0, 0],
+        filename:     'minhs-hart-chart.pdf',
+        image:        { type: 'jpeg', quality: 1.00 },
+        html2canvas:  { dpi: 200, scale: 5, width: 1050, height: 700},
         jsPDF:        { unit: 'px', format: 'letter', orientation: 'landscape' }
       };
 
-    html2pdf().set(opt).from(table).to('img').save();
+    html2pdf().set(opt).from(table).save();
 
 });
-
-// let button = document.getElementById("download-button");
-// button.addEventListener("click", function () {
-//     // let doc = new jsPDF("p", "mm", [300, 300]);
-//         let doc = new jsPDF("p", "pt", 'a4');
-
-//         doc.html(document.querySelector("#table"), {
-//             callback: function(doc) {
-//                 doc.save("HartChart.pdf");
-//             },
-//             margin: [60, 60, 60, 60],
-//             x: 30,
-//             y: 30
-//         });
-//     // let makePDF = document.querySelector("#table");
-
-//     // fromHTML Method
-//     // doc.fromHTML(makePDF);
-//     // doc.save("output.pdf");
-// });
-
 
 function getAlphaChars() {
     let letters = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase();
