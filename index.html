@@ -9,14 +9,13 @@
     <body>
         <!-- Header Section -->
         <header>
-            <div>
                 <h1>MINH'S Hart Chart App</h1>
 
                 <select name="color" id="color">
                     <option value="">Color</option>
                     <option value="black-white">Black and White</option>
-                    <option value="red-green">Multicolor (2)</option>
-                    <option value="red-green-blue">Multicolor (3)</option>
+                    <option value="multicolor-2">Multicolor (2)</option>
+                    <option value="multicolor-3">Multicolor (3)</option>
                 </select>
 
                 <select name="content" id="content">
@@ -27,7 +26,7 @@
 
                 <button id="refresh-button" type="button">Refresh</button>
                 <button id="download-button" type="button">Download</button>
-            </div>
+
         </header>
 
         <!-- Body Section -->
@@ -153,28 +152,6 @@
                 <td>Z</td>
             </tr>
         </table>
-        <script>
-        //     let button = document.getElementById("download-button");
-        //     button.addEventListener("click", function () {
-        //     // let doc = new jsPDF("p", "mm", [300, 300]);
-        //         let doc = new jsPDF("p", "pt", 'a4');
-
-        //         doc.html(document.querySelector("#table"), {
-        //             callback: function(doc) {
-        //                 doc.save("HartChart.pdf");
-        //             },
-        //             margin: [60, 60, 60, 60],
-        //             x: 30,
-        //             y: 30
-        //         });
-        //     // let makePDF = document.querySelector("#table");
-
-        //     // fromHTML Method
-        //     // doc.fromHTML(makePDF);
-        //     // doc.save("output.pdf");
-        // });
-
-        </script>
         <script src="script.js"></script>
     </body>
 </html>
