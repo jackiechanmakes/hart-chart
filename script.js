@@ -2,7 +2,10 @@ let table = document.getElementById("table");
 
 // Generate Hart Chart
 let refreshButton = document.getElementById("refresh-button");
+
 refreshButton.addEventListener("click", function() {
+    getWordFinding();
+
     let colors = document.getElementById("color");
     let colorsValue = colors.value;
 
@@ -42,6 +45,64 @@ function getColor(colors) {
 
     let randomChoice = Math.floor(Math.random() * colorOptions.length);
     return colorOptions[randomChoice];
+}
+
+function getWordFinding() {
+    let numCharsOfWordsCombo = getNumCharsOfWordsCombo(20);
+
+    let result = "";
+
+    for (let i = 0; i < numCharsOfWordsCombo.length; i++) {
+        let wordLength = numCharsOfWordsCombo[i];
+        if (wordLength === 1) {
+            let randomIndex = getRandomNumber(0, words1Char.length);
+            result += words1Char[randomIndex];
+        } else if (wordLength === 2) {
+            let randomIndex = getRandomNumber(0, words2Char.length);
+            result += words2Char[randomIndex];
+        } else if (wordLength === 3) {
+            let randomIndex = getRandomNumber(0, words3Char.length);
+            result += words3Char[randomIndex];
+        } else if (wordLength === 4) {
+            let randomIndex = getRandomNumber(0, words4Char.length);
+            result += words4Char[randomIndex];
+        } else if (wordLength === 5) {
+            let randomIndex = getRandomNumber(0, words5Char.length);
+            result += words5Char[randomIndex];
+        } else if (wordLength === 6) {
+            let randomIndex = getRandomNumber(0, words6Char.length);
+            result += words6Char[randomIndex];
+        } else if (wordLength === 7) {
+            let randomIndex = getRandomNumber(0, words7Char.length);
+            result += words7Char[randomIndex];
+        } else if (wordLength === 8) {
+            let randomIndex = getRandomNumber(0, words8Char.length);
+            result += words8Char[randomIndex];
+        }
+    }
+
+    return result;
+}
+
+function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function getNumCharsOfWordsCombo(numChars) {
+    while (true) {
+        let combo = [];
+        for (let i = 0; i < 5; i++){
+            combo.push(getRandomNumber(1, 8));
+        }
+
+        let lastNum = numChars - combo.reduce((accu, curr) => accu + curr, 0);
+        combo.push(lastNum);
+
+        if (lastNum > 0 && lastNum < 9) {
+            return combo;
+        }
+        combo = [];
+    }
 }
 
 // Download PDF of generated Hart Chart
