@@ -4,7 +4,7 @@ let table = document.getElementById("table");
 let refreshButton = document.getElementById("refresh-button");
 
 refreshButton.addEventListener("click", function() {
-    getWordFinding();
+    let wordFindingStr = getWordFinding();
 
     let colors = document.getElementById("color");
     let colorsValue = colors.value;
