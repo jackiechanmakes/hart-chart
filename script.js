@@ -4,19 +4,43 @@ let table = document.getElementById("table");
 let refreshButton = document.getElementById("refresh-button");
 
 refreshButton.addEventListener("click", function() {
-    let wordFindingStr = getWordFinding();
-
     let colors = document.getElementById("color");
     let colorsValue = colors.value;
 
     let content = document.getElementById("content");
     let contentValue = content.value;
 
-    for (let i = 0, row; row = table.rows[i]; i++) {
-        for (let j = 0, col; col = row.cells[j]; j++) {
-            col.innerText = getCharacter(contentValue);
-            col.style.color = getColor(colorsValue);
+    let numCols = table.rows[0].cells.length;
+    let numColPairs = numCols / 2;
+
+    let col1 = 0;
+    let col2 = numCols - 1;
+    let count = 0;
+
+    while (0 < numColPairs) {
+        let wordFindingStr = getWordFinding().toUpperCase();
+
+        if (numColPairs === 5) {
+            document.getElementById("test1").innerText = wordFindingStr;
+        } else if (numColPairs === 4) {
+            document.getElementById("test2").innerText = wordFindingStr;
+        } else if (numColPairs === 3) {
+            document.getElementById("test3").innerText = wordFindingStr;
+        } else if (numColPairs === 2) {
+            document.getElementById("test4").innerText = wordFindingStr;
+        } else if (numColPairs === 1) {
+            document.getElementById("test5").innerText = wordFindingStr;
         }
+
+        for (let row = 0; row < table.rows.length; row++) {
+            table.rows[row].cells[col1].innerText = wordFindingStr[count++];
+            table.rows[row].cells[col2].innerText = wordFindingStr[count++];
+        }
+
+        count = 0;
+        col1++;
+        col2--;
+        numColPairs--;
     }
 })
 
@@ -55,28 +79,28 @@ function getWordFinding() {
     for (let i = 0; i < numCharsOfWordsCombo.length; i++) {
         let wordLength = numCharsOfWordsCombo[i];
         if (wordLength === 1) {
-            let randomIndex = getRandomNumber(0, words1Char.length);
+            let randomIndex = getRandomNumber(0, words1Char.length - 1);
             result += words1Char[randomIndex];
         } else if (wordLength === 2) {
-            let randomIndex = getRandomNumber(0, words2Char.length);
+            let randomIndex = getRandomNumber(0, words2Char.length - 1);
             result += words2Char[randomIndex];
         } else if (wordLength === 3) {
-            let randomIndex = getRandomNumber(0, words3Char.length);
+            let randomIndex = getRandomNumber(0, words3Char.length - 1);
             result += words3Char[randomIndex];
         } else if (wordLength === 4) {
-            let randomIndex = getRandomNumber(0, words4Char.length);
+            let randomIndex = getRandomNumber(0, words4Char.length - 1);
             result += words4Char[randomIndex];
         } else if (wordLength === 5) {
-            let randomIndex = getRandomNumber(0, words5Char.length);
+            let randomIndex = getRandomNumber(0, words5Char.length - 1);
             result += words5Char[randomIndex];
         } else if (wordLength === 6) {
-            let randomIndex = getRandomNumber(0, words6Char.length);
+            let randomIndex = getRandomNumber(0, words6Char.length - 1);
             result += words6Char[randomIndex];
         } else if (wordLength === 7) {
-            let randomIndex = getRandomNumber(0, words7Char.length);
+            let randomIndex = getRandomNumber(0, words7Char.length - 1);
             result += words7Char[randomIndex];
         } else if (wordLength === 8) {
-            let randomIndex = getRandomNumber(0, words8Char.length);
+            let randomIndex = getRandomNumber(0, words8Char.length - 1);
             result += words8Char[randomIndex];
         }
     }
