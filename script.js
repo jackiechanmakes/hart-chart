@@ -8,6 +8,9 @@ refreshButton.addEventListener("click", function() {
     let colors = document.getElementById("color");
     let colorsValue = colors.value;
 
+    let style = document.getElementById("style");
+    let styleValue = style.value;
+
     let content = document.getElementById("content");
     let contentValue = content.value;
 
@@ -24,7 +27,9 @@ refreshButton.addEventListener("click", function() {
 
         for (let row = 0; row < table.rows.length; row++) {
             table.rows[row].cells[col1].innerText = twentyChars[count++];
+            table.rows[row].cells[col1].style.color = getColor(colorsValue, styleValue, col1, row);
             table.rows[row].cells[col2].innerText = twentyChars[count++];
+            table.rows[row].cells[col2].style.color = getColor(colorsValue, styleValue, col2, row);
         }
 
         count = 0;
@@ -62,19 +67,29 @@ function getCharacters(content, numChars) {
     return result;
 }
 
-function getColor(colors) {
+function getColor(colors, style, col, row) {
     let colorOptions;
 
     if (colors === "" || colors === "black-white") {
         colorOptions = ["black"];
-    } else if (colors === "multicolor-2") {
+    } else if (colors === "multicolor-2-red-green") {
         colorOptions = ["red", "green"];
+    } else if (colors === "multicolor-2-red-blue") {
+        colorOptions = ["red", "blue"];
+    } else if (colors === "multicolor-2-blue-green") {
+        colorOptions = ["blue", "green"];
     } else if (colors === "multicolor-3") {
         colorOptions = ["red", "green", "blue"];
     }
 
-    let randomChoice = Math.floor(Math.random() * colorOptions.length);
-    return colorOptions[randomChoice];
+    if (style === "random") {
+        let randomChoice = Math.floor(Math.random() * colorOptions.length);
+        return colorOptions[randomChoice];
+    } else if (style === "column") {
+        return colorOptions[col % colorOptions.length]
+    } else if (style === "row") {
+        return colorOptions[row % colorOptions.length];
+    }
 }
 
 function getWordFinding(numChars) {
