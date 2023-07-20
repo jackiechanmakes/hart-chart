@@ -4,12 +4,14 @@ let table = document.getElementById("table");
 let refreshButton = document.getElementById("refresh-button");
 
 refreshButton.addEventListener("click", function() {
+    // Chosen attributes
     let colors = document.getElementById("color");
     let colorsValue = colors.value;
 
     let content = document.getElementById("content");
     let contentValue = content.value;
 
+    // Traverse table
     let numCols = table.rows[0].cells.length;
     let numColPairs = numCols / 2;
 
@@ -18,23 +20,11 @@ refreshButton.addEventListener("click", function() {
     let count = 0;
 
     while (0 < numColPairs) {
-        let wordFindingStr = getWordFinding().toUpperCase();
-
-        if (numColPairs === 5) {
-            document.getElementById("test1").innerText = wordFindingStr;
-        } else if (numColPairs === 4) {
-            document.getElementById("test2").innerText = wordFindingStr;
-        } else if (numColPairs === 3) {
-            document.getElementById("test3").innerText = wordFindingStr;
-        } else if (numColPairs === 2) {
-            document.getElementById("test4").innerText = wordFindingStr;
-        } else if (numColPairs === 1) {
-            document.getElementById("test5").innerText = wordFindingStr;
-        }
+        let twentyChars = getTwentyChars(contentValue, 20).toUpperCase();
 
         for (let row = 0; row < table.rows.length; row++) {
-            table.rows[row].cells[col1].innerText = wordFindingStr[count++];
-            table.rows[row].cells[col2].innerText = wordFindingStr[count++];
+            table.rows[row].cells[col1].innerText = twentyChars[count++];
+            table.rows[row].cells[col2].innerText = twentyChars[count++];
         }
 
         count = 0;
@@ -42,18 +32,34 @@ refreshButton.addEventListener("click", function() {
         col2--;
         numColPairs--;
     }
-})
+});
 
-function getCharacter(content) {
-    let alphaChars = "abcdefghijklmnopqrstuvwxyz".toUpperCase();
+function getTwentyChars(content, numChars) {
+    if (content === "" || content === "letters") {
+        return getCharacters("letters", numChars);
+    } else if (content === "letters-numbers") {
+        return getCharacters("letters-numbers", numChars);
+    } else if (content === "word-finding", numChars) {
+        return getWordFinding(numChars);
+    }
+}
+
+function getCharacters(content, numChars) {
+    let result = "";
+
+    let alphaChars = "abcdefghijklmnopqrstuvwxyz";
     let numericChars = "1234567890";
     let alphaNumericChars = alphaChars + numericChars;
 
-    if (content === "" || content === "letters") {
-        return alphaChars.charAt(Math.floor(Math.random() * alphaChars.length));
-    } else if (content === "letters-numbers") {
-        return alphaNumericChars.charAt(Math.floor(Math.random() * alphaNumericChars.length));
+    for (let i = 0; i < numChars; i++) {
+        if (content === "letters") {
+            result += alphaChars.charAt(getRandomNumber(0, alphaChars.length - 1));
+        } else if (content === "letters-numbers") {
+            result += alphaNumericChars.charAt(getRandomNumber(0, alphaNumericChars.length - 1));
+        }
     }
+
+    return result;
 }
 
 function getColor(colors) {
@@ -71,8 +77,8 @@ function getColor(colors) {
     return colorOptions[randomChoice];
 }
 
-function getWordFinding() {
-    let numCharsOfWordsCombo = getNumCharsOfWordsCombo(20);
+function getWordFinding(numChars) {
+    let numCharsOfWordsCombo = getNumCharsOfWordsCombo(numChars);
 
     let result = "";
 
