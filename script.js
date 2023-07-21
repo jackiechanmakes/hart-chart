@@ -4,7 +4,7 @@ let table = document.getElementById("table");
 let refreshButton = document.getElementById("refresh-button");
 
 refreshButton.addEventListener("click", function() {
-    // Chosen attributes
+    // User's chosen attributes
     let colors = document.getElementById("color");
     let colorsValue = colors.value;
 
@@ -13,6 +13,9 @@ refreshButton.addEventListener("click", function() {
 
     let content = document.getElementById("content");
     let contentValue = content.value;
+
+    // Get color options
+    let colorOptions = getColorOptions(colorsValue);
 
     // Traverse table
     let numCols = table.rows[0].cells.length;
@@ -27,9 +30,9 @@ refreshButton.addEventListener("click", function() {
 
         for (let row = 0; row < table.rows.length; row++) {
             table.rows[row].cells[col1].innerText = twentyChars[count++];
-            table.rows[row].cells[col1].style.color = getColor(colorsValue, styleValue, col1, row);
+            table.rows[row].cells[col1].style.color = getColoring(colorOptions, styleValue, col1, row);
             table.rows[row].cells[col2].innerText = twentyChars[count++];
-            table.rows[row].cells[col2].style.color = getColor(colorsValue, styleValue, col2, row);
+            table.rows[row].cells[col2].style.color = getColoring(colorOptions, styleValue, col2, row);
         }
 
         count = 0;
@@ -67,7 +70,7 @@ function getCharacters(content, numChars) {
     return result;
 }
 
-function getColor(colors, style, col, row) {
+function getColorOptions(colors) {
     let colorOptions;
 
     if (colors === "" || colors === "black-white") {
@@ -82,6 +85,11 @@ function getColor(colors, style, col, row) {
         colorOptions = ["red", "green", "blue"];
     }
 
+    colorOptions = shuffle(colorOptions);
+    return colorOptions;
+}
+
+function getColoring(colorOptions, style, col, row) {
     if (style === "random") {
         let randomChoice = Math.floor(Math.random() * colorOptions.length);
         return colorOptions[randomChoice];
@@ -127,6 +135,21 @@ function getWordFinding(numChars) {
     }
 
     return result;
+}
+
+// Fisher-Yates (aka Knuth) Shuffle
+function shuffle(array) {
+    let currentIndex = array.length;
+    let randomIndex;
+
+    while (currentIndex != 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    }
+
+    return array;
 }
 
 function getRandomNumber(min, max) {
