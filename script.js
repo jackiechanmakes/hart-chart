@@ -1,3 +1,4 @@
+
 let table = document.getElementById("table");
 
 // Generate Hart Chart
@@ -81,7 +82,7 @@ function getColorOptions(colors) {
         colorOptions = ["red", "blue"];
     } else if (colors === "multicolor-2-blue-green") {
         colorOptions = ["blue", "green"];
-    } else if (colors === "multicolor-3") {
+    } else if (colors === "multicolor-3-red-green-blue") {
         colorOptions = ["red", "green", "blue"];
     }
 
@@ -90,7 +91,7 @@ function getColorOptions(colors) {
 }
 
 function getColoring(colorOptions, style, col, row) {
-    if (style === "random") {
+    if (style === "" || style === "random") {
         let randomChoice = Math.floor(Math.random() * colorOptions.length);
         return colorOptions[randomChoice];
     } else if (style === "column") {
@@ -176,13 +177,21 @@ function getNumCharsOfWordsCombo(numChars) {
 // Download PDF of generated Hart Chart
 let downloadButton = document.getElementById("download-button");
 downloadButton.addEventListener("click", function() {
-    let opt = {
-        margin:       [5, 7, 0, 0],
-        filename:     'minhs-hart-chart.pdf',
-        image:        { type: 'jpeg', quality: 1.00 },
-        html2canvas:  { dpi: 200, scale: 5, width: 1050, height: 700},
-        jsPDF:        { unit: 'px', format: 'letter', orientation: 'landscape' }
-      };
+    const { jsPDF } = window.jspdf;
+    const scale = window.innerWidth / window.outerWidth;
+    if (scale != 1) {
+       document.body.style.zoom = scale;
+    }
 
-    html2pdf().set(opt).from(table).save();
+    let pdf = new jsPDF('l', 'pt', 'a4');
+    pdf.html(document.getElementById('table'), {
+        html2canvas: {
+            scale: 1 // default is window.devicePixelRatio
+        },
+        callback: function () {
+            pdf.save('test.pdf');
+            // window.open(pdf.output('bloburl')); // to debug
+        },
+        y: 50
+    });
 });

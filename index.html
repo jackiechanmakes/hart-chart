@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Minh's Hart Chart App</title>
+        <title>Minh's Hart Chart Generator</title>
         <link rel="icon" type="image/png" href="/icons8-wise-mind-ios-16-filled-16.png">
         <link rel="stylesheet" type="text/css" href="layout.css">
-        <script src="html2pdf.bundle.min.js"></script>
+        <!-- <script src="html2pdf.bundle.min.js"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
     </head>
     <body>
         <!-- Header Section -->
         <header>
-                <h1>MINH'S Hart Chart App</h1>
+                <h1>hart chart generator</h1>
+                <div id="attributes">
+                    <select name="color" id="color">
+                        <option value="" selected="true" disabled="disabled">Color</option>
+                        <option value="black-white">Black and White</option>
+                        <option value="multicolor-2-red-green">Multicolor (2) - Red and Green</option>
+                        <option value="multicolor-2-red-blue">Multicolor (2) - Red and Blue</option>
+                        <option value="multicolor-2-blue-green">Multicolor (2) - Blue and Green</option>
+                        <option value="multicolor-3-red-green-blue">Multicolor (3) - Red, Blue, and Green</option>
+                    </select>
 
-                <select name="color" id="color">
-                    <option value="">Color</option>
-                    <option value="black-white">Black and White</option>
-                    <option value="multicolor-2-red-green">Multicolor (2) - Red and Green</option>
-                    <option value="multicolor-2-red-blue">Multicolor (2) - Red and Blue</option>
-                    <option value="multicolor-2-blue-green">Multicolor (2) - Blue and Green</option>
-                    <option value="multicolor-3">Multicolor (3)</option>
-                </select>
+                    <select name="style" id="style">
+                        <option value="" selected="true" disabled="disabled">Coloring Style</option>
+                        <option value="random">Random</option>
+                        <option value="column">Column</option>
+                        <option value="row">Row</option>
+                    </select>
 
-                <select name="style" id="style">
-                    <option value="">Coloring Style</option>
-                    <option value="random">Random</option>
-                    <option value="column">Column</option>
-                    <option value="row">Row</option>
-                </select>
+                    <select name="content" id="content">
+                        <option value="" selected="true" disabled="disabled">Content</option>
+                        <option value="letters">Letters</option>
+                        <option value="letters-numbers">Letters and Numbers</option>
+                        <option value="word-finding">Word Finding</option>
+                    </select>
 
-                <select name="content" id="content">
-                    <option value="">Content</option>
-                    <option value="letters">Letters</option>
-                    <option value="letters-numbers">Letters and Numbers</option>
-                    <option value="word-finding">Word Finding</option>
-                </select>
-
-                <button id="refresh-button" type="button">Refresh</button>
-                <button id="download-button" type="button">Download</button>
-
+                    <button id="refresh-button" type="button">Refresh</button>
+                    <button id="download-button" type="button">Download</button>
+                </div>
         </header>
 
         <!-- Body Section -->
@@ -162,11 +163,15 @@
                 <td>Z</td>
             </tr>
         </table>
-        <div id="test1"></div>
-        <div id="test2"></div>
-        <div id="test3"></div>
-        <div id="test4"></div>
-        <div id="test5"></div>
+        <script src=
+        "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+           </script>
+           <script src=
+       "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+           </script>
+           <script src=
+        "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+           </script>
         <script src="dataset.js"></script>
         <script src="script.js"></script>
     </body>

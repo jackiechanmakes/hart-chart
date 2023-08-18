@@ -128,7 +128,7 @@ let words5Char =
     "ahead", "allow", "alone", "along", "among", "apply", "argue", "avoid",
     "begin", "black", "board", "break", "bring", "build", "carry", "catch",
     "cause", "chair", "check", "child", "civil", "claim", "class", "clear",
-    "close", "coach", "color", "could", "court", "cover", "crime", "dream",
+    "close", "coach", "color", "could", "court", "cover", "dream", "dress",
     "drive", "early", "eight", "enjoy", "enter", "event", "every", "exist",
     "field", "fight", "final", "first", "floor", "focus", "force", "front",
     "glass", "great", "green", "group", "guess", "happy", "heart", "heavy",
