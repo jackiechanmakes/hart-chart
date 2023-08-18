@@ -189,8 +189,7 @@ downloadButton.addEventListener("click", function() {
             scale: 1 // default is window.devicePixelRatio
         },
         callback: function () {
-            pdf.save('test.pdf');
-            // window.open(pdf.output('bloburl')); // to debug
+            pdf.save('minhs-hart-chart.pdf');
         },
         y: 50
     });
