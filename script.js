@@ -2,9 +2,9 @@
 let table = document.getElementById("table");
 
 // Generate Hart Chart
-let refreshButton = document.getElementById("refresh-button");
+let generateButton = document.getElementById("generate-button");
 
-refreshButton.addEventListener("click", function() {
+generateButton.addEventListener("click", function() {
     // User's chosen attributes
     let colors = document.getElementById("color");
     let colorsValue = colors.value;
