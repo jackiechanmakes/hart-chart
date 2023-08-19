@@ -5,6 +5,26 @@ let table = document.getElementById("table");
 let generateButton = document.getElementById("generate-button");
 
 generateButton.addEventListener("click", function() {
+    getChart();
+});
+
+let colorSelect = document.getElementById("color");
+colorSelect.onchange = function(){
+    getChart();
+};
+
+let styleSelect = document.getElementById("style");
+styleSelect.onchange = function(){
+    getChart();
+};
+
+let contentSelect = document.getElementById("content");
+contentSelect.onchange = function(){
+    getChart();
+};
+
+
+function getChart() {
     // User's chosen attributes
     let colors = document.getElementById("color");
     let colorsValue = colors.value;
@@ -41,7 +61,7 @@ generateButton.addEventListener("click", function() {
         col2--;
         numColPairs--;
     }
-});
+}
 
 function getTwentyChars(content, numChars) {
     if (content === "" || content === "letters") {
