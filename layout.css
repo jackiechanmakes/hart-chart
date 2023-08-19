@@ -46,9 +46,11 @@ select, button {
 }
 
 #generate-button {
-    background-color: #B1C9E7;
-    color: #3D3D3D;
     border-color: #E58AB3;
+}
+
+#download-button {
+    border-color: #7C73BF;
 }
 
 table {
