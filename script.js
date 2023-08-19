@@ -101,17 +101,20 @@ function getCharacters(content, numChars) {
 
 function getColorOptions(colors) {
     let colorOptions;
+    let red = "#FF0000";
+    let green = "#00A349";
+    let blue = "#0000FF";
 
     if (colors === "" || colors === "black-white") {
         colorOptions = ["black"];
     } else if (colors === "multicolor-2-red-green") {
-        colorOptions = ["red", "green"];
+        colorOptions = [red, green];
     } else if (colors === "multicolor-2-red-blue") {
-        colorOptions = ["red", "blue"];
+        colorOptions = [red, blue];
     } else if (colors === "multicolor-2-blue-green") {
-        colorOptions = ["blue", "green"];
+        colorOptions = [blue, green];
     } else if (colors === "multicolor-3-red-green-blue") {
-        colorOptions = ["red", "green", "blue"];
+        colorOptions = [red, green, blue];
     }
 
     colorOptions = shuffle(colorOptions);
