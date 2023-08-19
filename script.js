@@ -23,6 +23,14 @@ contentSelect.onchange = function(){
     getChart();
 };
 
+document.body.onkeyup = function(event) {
+    if (event.key == " " ||
+        event.code == "Space" ||
+        event.keyCode == 32
+    ) {
+        getChart();
+    }
+}
 
 function getChart() {
     // User's chosen attributes
