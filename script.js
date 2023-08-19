@@ -8,18 +8,18 @@ generateButton.addEventListener("click", function() {
     getChart();
 });
 
-let colorSelect = document.getElementById("color");
-colorSelect.onchange = function(){
+let colorAttribute = document.getElementById("color");
+colorAttribute.onchange = function(){
     getChart();
 };
 
-let styleSelect = document.getElementById("style");
-styleSelect.onchange = function(){
+let styleAttribute = document.getElementById("style");
+styleAttribute.onchange = function(){
     getChart();
 };
 
-let contentSelect = document.getElementById("content");
-contentSelect.onchange = function(){
+let contentAttribute = document.getElementById("content");
+contentAttribute.onchange = function(){
     getChart();
 };
 
