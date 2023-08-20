@@ -4,39 +4,39 @@
         <title>Minh's Hart Chart Generator</title>
         <link rel="icon" type="image/png" href="/icon.png">
         <link rel="stylesheet" type="text/css" href="layout.css">
+        <link rel="manifest" href="/manifest.json">
     </head>
     <body>
         <!-- Header Section -->
         <header>
-            <link rel="manifest" href="manifest.json">
-                <h1>hart chart generator</h1>
-                <div id="attributes">
-                    <select name="color" id="color">
-                        <option value="" selected="true" disabled="disabled">Color</option>
-                        <option value="black-white">Black & White</option>
-                        <option value="multicolor-2-red-green">Multicolor (2) - Red & Green</option>
-                        <option value="multicolor-2-red-blue">Multicolor (2) - Red & Blue</option>
-                        <option value="multicolor-2-blue-green">Multicolor (2) - Blue & Green</option>
-                        <option value="multicolor-3-red-green-blue">Multicolor (3) - Red, Blue, & Green</option>
-                    </select>
+            <h1>hart chart generator</h1>
+            <div id="attributes">
+                <select name="color" id="color">
+                    <option value="" selected="true" disabled="disabled">Color</option>
+                    <option value="black-white">Black & White</option>
+                    <option value="multicolor-2-red-green">Multicolor (2) - Red & Green</option>
+                    <option value="multicolor-2-red-blue">Multicolor (2) - Red & Blue</option>
+                    <option value="multicolor-2-blue-green">Multicolor (2) - Blue & Green</option>
+                    <option value="multicolor-3-red-green-blue">Multicolor (3) - Red, Blue, & Green</option>
+                </select>
 
-                    <select name="style" id="style">
-                        <option value="" selected="true" disabled="disabled">Coloring Style</option>
-                        <option value="random">Random</option>
-                        <option value="column">Column</option>
-                        <option value="row">Row</option>
-                    </select>
+                <select name="style" id="style">
+                    <option value="" selected="true" disabled="disabled">Coloring Style</option>
+                    <option value="random">Random</option>
+                    <option value="column">Column</option>
+                    <option value="row">Row</option>
+                </select>
 
-                    <select name="content" id="content">
-                        <option value="" selected="true" disabled="disabled">Content</option>
-                        <option value="letters">Letters</option>
-                        <option value="letters-numbers">Letters & Numbers</option>
-                        <option value="word-finding">Word Finding</option>
-                    </select>
+                <select name="content" id="content">
+                    <option value="" selected="true" disabled="disabled">Content</option>
+                    <option value="letters">Letters</option>
+                    <option value="letters-numbers">Letters & Numbers</option>
+                    <option value="word-finding">Word Finding</option>
+                </select>
 
-                    <button id="generate-button" type="button">Generate Chart</button>
-                    <button id="download-button" type="button">Download</button>
-                </div>
+                <button id="generate-button" type="button">Generate Chart</button>
+                <button id="download-button" type="button">Download</button>
+            </div>
         </header>
 
         <!-- Body Section -->
